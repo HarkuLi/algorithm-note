@@ -21,4 +21,10 @@ TEST(InsertionSortTest, AlreadySorted) {
   InsertionSort(&input);
   EXPECT_THAT(input, testing::ElementsAreArray({1, 2, 3, 4, 5, 6}));
 }
+
+TEST(InsertionSortTest, WorstCase) {
+  std::vector<int> input = {6, 5, 4, 3, 2, 1};
+  InsertionSort(&input);
+  EXPECT_THAT(input, testing::ElementsAreArray({1, 2, 3, 4, 5, 6}));
+}
 }
