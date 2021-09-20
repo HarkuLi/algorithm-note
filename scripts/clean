@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Clean built directories for all modules.
+
+echo "Cleaned modules:"
+
+for module_dir in src/*; do
+  if [[ ! -d "${module_dir}" ]]; then
+    continue
+  fi
+
+  echo "${module_dir}"
+  (cd "${module_dir}" && make -s clean)
+done

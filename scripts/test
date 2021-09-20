@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# Build and run tests for all modules.
+
+function print_module_info() {
+  echo
+  echo '********************'
+  echo "Test $1"
+  echo '********************'
+  echo
+}
+
+function main() {
+  local module_dir
+
+  for module_dir in src/*; do
+    if [[ ! -d "${module_dir}" ]]; then
+      continue
+    fi
+
+    print_module_info "${module_dir}"
+    (cd "${module_dir}" && make test)
+  done
+}
+
+main
