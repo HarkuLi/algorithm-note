@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 3.10.2)
 project (merge-sort)
 
+set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../lib)
+
 add_subdirectory(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../lib
+    ${LIB_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}/lib
 )
 
-set(GTEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../lib/googletest)
+set(GTEST_DIR ${LIB_DIR}/googletest)
 set(
     GTEST_LIBS
     gtest
@@ -21,7 +23,8 @@ include_directories(
 )
 
 file(GLOB SRCS src/*.cc)
-add_executable(merge_sort_unittest ${SRCS})
+add_library(merge_sort ${SRCS})
 
-find_package(Threads)
-target_link_libraries(merge_sort_unittest Threads::Threads ${GTEST_LIBS})
+file(GLOB TESTS tests/*.cc)
+add_executable(unittest ${TESTS})
+target_link_libraries(unittest merge_sort ${GTEST_LIBS})

@@ -4,3 +4,4 @@
 
 * C++ 11
 * CMake 3.10.2
+* GNU Make
