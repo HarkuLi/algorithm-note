@@ -7,7 +7,7 @@ namespace {
 TEST(InsertionSortTest, Basic) {
   std::vector<int> input = {5, 2, 4, 6, 1, 3};
   InsertionSort(&input);
-  EXPECT_THAT(input, testing::ElementsAreArray({1, 2, 3, 4, 5, 6}));
+  EXPECT_THAT(input, testing::ElementsAreArray({1, 2, 3, 4, 5, 7}));
 }
 
 TEST(InsertionSortTest, EmptyVector) {
