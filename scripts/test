@@ -10,6 +10,17 @@ function print_module_info() {
   echo
 }
 
+function test_module() {
+  local module_dir="$1"
+
+  print_module_info "${module_dir}"
+  (cd "${module_dir}" && make test)
+
+  if (( $? != 0 )); then
+    exit 1
+  fi
+}
+
 function main() {
   local module_dir
 
@@ -18,8 +29,7 @@ function main() {
       continue
     fi
 
-    print_module_info "${module_dir}"
-    (cd "${module_dir}" && make test)
+    test_module "${module_dir}"
   done
 }
 
