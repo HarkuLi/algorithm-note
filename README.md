@@ -9,5 +9,5 @@
 ## Run tests
 
 ```
-./scripts/test.sh
+./scripts/test
 ```
